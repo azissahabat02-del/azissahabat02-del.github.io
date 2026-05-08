@@ -1,9 +1,217 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contoh Halaman</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #F5F2ED;
+      --ink: #1A1714;
+      --muted: #7A7570;
+      --accent: #2C2825;
+      --line: #D8D2C8;
+      --btn-bg: #1A1714;
+      --btn-text: #F5F2ED;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    /* Subtle grain texture */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      max-width: 560px;
+      width: 100%;
+      background: #FDFAF7;
+      border: 1px solid var(--line);
+      padding: 3.5rem 3rem 3rem;
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .tag {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .tag::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 2rem;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    .divider {
+      width: 2rem;
+      height: 1px;
+      background: var(--ink);
+      margin-bottom: 1.8rem;
+    }
+
+    p {
+      font-size: 0.92rem;
+      line-height: 1.85;
+      color: #4A4540;
+      margin-bottom: 1.2rem;
+    }
+
+    p:last-of-type {
+      margin-bottom: 2.6rem;
+    }
+
+    .btn-wrap {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.85rem 1.8rem;
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-download::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.06);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .btn-download:hover {
+      background: #2C2825;
+      transform: translateY(-1px);
+    }
+
+    .btn-download:hover::after { opacity: 1; }
+    .btn-download:active { transform: translateY(0); }
+
+    .btn-download svg {
+      width: 13px;
+      height: 13px;
+      flex-shrink: 0;
+    }
+
+    .btn-note {
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+    }
+
+    /* Corner accent */
+    .card::after {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      width: 2rem;
+      height: 2rem;
+      border-top: 2px solid var(--ink);
+      border-left: 2px solid var(--ink);
+    }
+  </style>
+</head>
 <body>
-  <h1>Hello World</h1>
-  <p>Welcome to my 
-GitHub Pages site!
-</p>
+
+  <div class="card">
+    <div class="tag">Contoh Dokumen</div>
+
+    <h1>Teks <em>Ilustratif</em><br>untuk Halaman Ini</h1>
+
+    <div class="divider"></div>
+
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est, mauris placerat eleifend leo.
+    </p>
+
+    <p>
+      Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis, praesent dapibus, neque id cursus faucibus, tortor neque egestas augue.
+    </p>
+
+    <div class="btn-wrap">
+      <a href="README.md" class="btn-download" download>
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 2v8M5 7l3 3 3-3M2 12h12"/>
+        </svg>
+        Unduh Berkas
+      </a>
+      <span class="btn-note">HTML · ~2 KB</span>
+    </div>
+  </div>
+
+  <script>
+
+  </script>
+
 </body>
 </html>
